@@ -38,6 +38,6 @@ then
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
     ./akrech;
 else
-    echo -e "$yellow [!]$done$red Invalid command...$done"
+    echo -e "$yellow[!]$done$red Invalid command...$done"
     echo -e "$yellow[x]$done$green Try again$done"
 fi
