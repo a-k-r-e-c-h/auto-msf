@@ -18,7 +18,7 @@ blink='\e[5m'
 echo -e "$yellow[i]$done Access$blink$red akrech$done from anywhere on your terminal?$bold Y/N$done"
 read -p ":" ans
 
-if [ $ans = Y ] || [ $ans = y ]
+if [ $ans = Y ] || [ $ans = y ];
 then
     chmod +x akrech.sh
     echo -e "$green[+]$done You need root permission..."
@@ -27,7 +27,7 @@ then
     sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
     akrech;
-elif [ $ans = N ] || [ $ans = n ]
+elif [ $ans = N ] || [ $ans = n ];
 then
     chmod +x akrech.sh
     mv akrech.sh akrech
