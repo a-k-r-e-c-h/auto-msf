@@ -39,5 +39,5 @@ then
     ./akrech;
 else
     echo -e "$yellow [!]$done$red Invalid command...$done"
-    echo -e "$$yellow[x]$done$green Try again$done"
+    echo -e "$yellow[x]$done$green Try again$done"
 fi
