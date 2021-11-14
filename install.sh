@@ -26,6 +26,7 @@ then
     echo -e "$blue[!]$done Done... now you can access$red akrech$done from anywhere on your terminal"
     sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
+    akrech;
 elif [ $ans = N ] || [ $ans = n ]
 then
     chmod +x akrech.sh
@@ -35,6 +36,7 @@ then
     echo -e "$green[!]$done Now you have to use ./akrech to use akrech"
     sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
+    ./akrech;
 else
     echo -e "$yellow [!]$done$red Invalid command...$done"
     echo -e "$$yellow[x]$done$green Try again$done"
