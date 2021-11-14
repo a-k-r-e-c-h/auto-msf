@@ -23,11 +23,19 @@ then
     chmod +x akrech.sh
     echo -e "$green[+]$done You need root permission..."
     sudo mv akrech.sh /bin/akrech
-    echo -e "$blue[#]$done Done!!... now you can access$red akrech$done from anywhere of your terminal"
+    echo -e "$blue[!]$done Done... now you can access$red akrech$done from anywhere on your terminal"
+    sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
-else
+elif [ $ans = N ] || [ $ans = n ]
+then
     chmod +x akrech.sh
     mv akrech.sh akrech
-    echo -e "$green[$]$done Done!!"
+    echo -e "$green[!]$done Done..."
+    sleep 1
+    echo -e "$green[!]$done Now you have to use ./akrech to use akrech"
+    sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
+else
+    echo -e "$yellow [!]$done$red Invalid command$done"
+    echo -e "$$yellow[x]$done$green Exit$done"
 fi
