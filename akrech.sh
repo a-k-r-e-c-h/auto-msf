@@ -58,7 +58,12 @@ echo -e "\e[34m[*]Starting\e[0m \e[91mMetasploit\e[0m \e[34mwith given commands.
 sleep 1
 echo -e "\e[34m[*]set LHOST as $IP\e[0m"
 sleep 1
-echo -e "\e[34m[*]set LPORT as $PORT\e[0m"
+if [ -z "$PORT" ]
+then
+    echo -e "\e[34m[*]set LPORT as 4444\e[0m" 
+else
+    echo -e "\e[34m[*]set LPORT as $PORT\e[0m"
+fi
 sleep 1
 echo -e "\e[36m[*]press (CTRL + C) or re-run akrech, if you want any change in modules...\e[0m"
 sleep 1
