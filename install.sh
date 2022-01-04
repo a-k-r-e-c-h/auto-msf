@@ -22,10 +22,11 @@ if [ $ans == Y ] || [ $ans == y ];
 then
     chmod +x akrech.sh
     echo -e "$green[+]$done You need root permission..."
-    sudo mv akrech.sh /bin/akrech
+    sudo cp ./akrech.sh /bin/akrech
     echo -e "$blue[!]$done Done... now you can access$red akrech$done from anywhere on your terminal"
     sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
+    sleep 1
     akrech;
 elif [ $ans == N ] || [ $ans == n ];
 then
@@ -36,8 +37,10 @@ then
     echo -e "$green[!]$done Now you have to use ./akrech to use akrech"
     sleep 1
     echo -e "$yellow[!]$done$bold Happy Hunting$done$yellow[!]$done"
+    sleep 1
     ./akrech;
 else
     echo -e "$yellow[!]$done$red Invalid command...$done"
+    sleep 1
     echo -e "$yellow[x]$done$green Try again$done"
 fi
