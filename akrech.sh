@@ -80,9 +80,9 @@ echo -e "${b}[*]Starting${S} ${lr}metasploit${S} ${b}with given commands...${S}"
 sleep 1
 if [ -z $IP ]
 then
-echo -e "${r}[!]invalid LHOST${S}"
+echo -e "${y}[!]${r}invalid LHOST${S}"
 sleep 1
-echo -e "${b}[!]try again...${S}"
+echo -e "${y}[!]${b}try again...${S}"
 exit
 else
 echo -e "${b}[*]set LHOST as $IP${S}"
